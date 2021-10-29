@@ -3,6 +3,8 @@ import { Alert } from "@trussworks/react-uswds";
 import React from "react";
 import Helmet from "react-helmet";
 
+import site from "../../content/site.json";
+
 import { NotFound } from "./NotFound";
 import { UnsupportedBrowser } from "./UnsupportedBrowser";
 
@@ -33,13 +35,20 @@ function ErrorPageWrapper({ children }: JSX.Element) {
 }
 
 function ErrorMessageWrapper({ children }: JSX.Element) {
-    return <div className="grid-container">{children}</div>;
+    return (
+        <div className="grid-container">
+            <div className="tablet:grid-col-8">{children}</div>
+        </div>
+    );
 }
 
 function GenericErrorMessage(): JSX.Element {
     return (
         <Alert type="error">
-            Our appologies, there was an error loading this content.
+            <h2 className="usa-alert__heading">Error: not found</h2>
+            <p className="usa-alert__text">
+                There was an error loading this content. If you continue to experience this error, contact us at reportstream@cdc.gov.
+            </p>
         </Alert>
     );
 }
@@ -52,17 +61,23 @@ function GenericErrorPage(): JSX.Element {
             </Helmet>
             <div className="usa-prose">
                 <h1>An error has occurred</h1>
+                <p className="usa-intro">The application has encountered an unknown error.</p>
                 <p>
-                    The application has encountered an unknown error. It doesn't
-                    appear to have affected your data, but our technical staff
-                    have been automatically notified and will be looking into
-                    this with the utmost urgency.
+                    This event has been logged and our technical staff have been automatically notified.
                 </p>
                 <div className="margin-y-5">
                     <ul className="usa-button-group">
                         <li className="usa-button-group__item">
                             <a href="./" className="usa-button">
                                 Visit homepage
+                            </a>
+                        </li>
+                        <li className="usa-button-group__item">
+                            <a
+                                className="usa-button usa-button--outline"
+                                href={"mailto:" + site.orgs.RS.email}
+                            >
+                                Contact us
                             </a>
                         </li>
                     </ul>
