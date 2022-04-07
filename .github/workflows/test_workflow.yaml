@@ -6,9 +6,9 @@ permissions:
   contents: read
   issues: write
 
-defaults:
-  run:
-    working-directory: prime-router
+# defaults:
+#   run:
+#     working-directory: prime-router
 
 jobs:
   create_issue:
