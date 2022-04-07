@@ -12,7 +12,9 @@ defaults:
 
 jobs:
   create_issue:
-    runs-on: node:14-alpine
+    runs-on: ubuntu-latest
+    container:
+      image: node:14-alpine
     steps:
       - name: Install depcheck
         run: |
